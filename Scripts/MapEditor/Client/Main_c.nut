@@ -177,8 +177,6 @@ function onScriptUnload() {
 
 function onClientCommand( cmd, text ) {
 	
-	try {
-
 	// Creates an Object
 	if ( cmd == "addob" ) {
 		if ( !text ) Message( "Error - You must specify a model ID", Colour( 255, 100, 100 ) );
@@ -190,9 +188,9 @@ function onClientCommand( cmd, text ) {
 			editorMessage( "You can edit its position with [#FF0000]/moveob <object id>[#d]" , Col_PM );
 		}
 	}
-	
+	// Removes an object
 	else if ( cmd == "removeob" ) {
-		if ( !text ) Message( "Error - You must specify a model ID", Colour( 255, 100, 100 ) );
+		if ( !text ) Message( "Error - You must specify an object ID", Colour( 255, 100, 100 ) );
 		else if ( !IsNum( text ) ) MessagePlayer( "Error - Model ID must be a number", pPlayer, Colour( 255, 100, 100 ) );
 		else if ( !FindObject( text.tointeger() ) ) Message( "Error - Cannot find that object.", Colour( 255, 100, 100 ) );
 		else if ( middleWindow.Window.Visible ) Message( "Error - Exit the editor first.", Colour( 255, 100, 100 ) );
@@ -201,7 +199,7 @@ function onClientCommand( cmd, text ) {
 			editorMessage( "Removed object ID: [ " + text + " ]." , Col_PM );
 		}
 	}
-	
+	// Enters the editor
 	else if ( cmd == "moveob" ) {
 		if ( !text ) Message( "Error - You must specify an ID", Colour( 255, 100, 100 ) );
 		else {
@@ -228,7 +226,7 @@ function onClientCommand( cmd, text ) {
 			}
 		}
 	}
-	
+	// Returns the nearby objects
 	else if ( cmd == "nearob" ) {
 		if ( !text ) Message( "Error - You must specify a range", Colour( 255, 100, 100 ) );
 		else if ( !IsNum( text ) ) MessagePlayer( "Error - range must be a number", pPlayer, Colour( 255, 100, 100 ) );
@@ -238,7 +236,7 @@ function onClientCommand( cmd, text ) {
 			CallServerFunc( "MapEditor/Main.nut", "nearMapObject", pPlayer, text.tointeger() );
 		}
 	}
-	
+	// Saves a map
 	else if ( cmd == "savemap" ) {
 		if ( !text ) Message( "Error - You must specify a name for the map (one word only)", Colour( 255, 100, 100 ) );
 		else if ( middleWindow.Window.Visible ) Message( "Error - Exit the editor first.", Colour( 255, 100, 100 ) );
@@ -247,10 +245,6 @@ function onClientCommand( cmd, text ) {
 			editorMessage("Map: [" + text + "] saved successfully!", Col_PM );
 		}
 	}
-	
-	} catch( e ) { 
-		Message( e ) 
-	};
 	
 }
 

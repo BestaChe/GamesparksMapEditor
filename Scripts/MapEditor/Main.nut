@@ -48,7 +48,7 @@ function onScriptLoad()
 
 	loadScript( "Object" ); // Everything related to objects
 	loadScript( "Loader" ); // Map loader
-//  loadScript( "Vehicle" ); // Everything related to vehicles
+	
 	print( "Map Editor Script v" + VERSION + " loaded!" );
 	
 	return 1;
@@ -63,15 +63,13 @@ function onScriptLoad()
 //
 function onServerStart()
 {
-	
-	
 	return 1;
 }
 
 ///////////////////////////////////////
 //
 //  Type: Main Event
-//  Description: When unloading all from
+//  Description: When unloading all scripts from
 // 				 the server...
 //  Params: None
 //  Returns: 1
@@ -79,6 +77,7 @@ function onServerStart()
 function onScriptUnload()
 {
 	unloadScript( "Object" );
+	unloadScript( "Loader" );
 	return 1;
 }
 
@@ -148,21 +147,6 @@ function unloadScript( scriptName ) {
 	}
 
 }
-
-///////////////////////////////////////
-//
-//  Type: Pseudo-random Function
-//  Description: Generates a pseudo-random
-//				 number!
-//  Params: start  -> minimum
-//			finish -> maximum
-//  Returns: random integer
-//
-function RandNum( start, finish ) {
-    local t = ((rand() % (( finish ) - start)) + start);
-	return t;
-}
-
 ///////////////////////////////////////
 //
 //  Type: Position function
@@ -202,6 +186,15 @@ function GetPlayer2DLookAtPos( player, range )
 	return Vector( x2, y2, player.Pos.z);
 }
 
+///////////////////////////////////////
+//
+//  Type: Game message function
+//  Description: Game message, yay!
+//  Params: text   -> the text to print
+//			player -> the player to print to
+//			color  -> the colour
+//  Returns: None
+//
 function editorMessage( text, player, color ) {
 	MessagePlayer("[#009999] >>[#d] " + text, player, color );
 }

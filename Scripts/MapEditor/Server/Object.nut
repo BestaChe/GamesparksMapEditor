@@ -64,25 +64,67 @@ function Object_onScriptUnload()
 //
 //************************************************** //
 
+///////////////////////////////////////
+//
+//  Type: Object function
+//  Description: Creates an object
+//  Params: id -> object's id
+//  Returns: Nothing
+//
 function createMapObject( model, player ) {
 	local ob = CreateObject( model.tointeger(), GetPlayer2DLookAtPos( player, 10 ) );
 }
 
+///////////////////////////////////////
+//
+//  Type: Object function
+//  Description: Removes an object
+//  Params: id -> object's id
+//  Returns: Nothing
+//
 function removeMapObject( id ) {
 	local ob = FindObject( id );
 	ob.Remove();
 }
 
+///////////////////////////////////////
+//
+//  Type: Object function
+//  Description: Moves the object
+//  Params: id -> object's id
+//			x  -> x movement
+//			y  -> y movement
+//			z  -> z movement
+//  Returns: Nothing
+//
 function moveMapObject( id, x, y, z ) {
 	local ob = FindObject( id );
 	ob.Pos = Vector( ob.Pos.x + x, ob.Pos.y + y, ob.Pos.z + z );
 }
 
+///////////////////////////////////////
+//
+//  Type: Object function
+//  Description: Rotates the object
+//  Params: id -> object's id
+//			x  -> x movement
+//			y  -> y movement
+//			z  -> z movement
+//  Returns: Nothing
+//
 function rotateMapObject( id, x, y, z ) {
 	local ob = FindObject( id );
 	ob.Angle = Vector( ob.Angle.x + x, ob.Angle.y + y, ob.Angle.z + z );
 }
 
+///////////////////////////////////////
+//
+//  Type: Object function
+//  Description: Prints the nearby objects
+//  Params: player    -> the player
+//			distance  -> minimum distance
+//  Returns: Nothing
+//
 function nearMapObject( player, distance ) {
 	
 	local count = 0;
