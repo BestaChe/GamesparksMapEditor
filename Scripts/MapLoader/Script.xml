@@ -1,0 +1,3 @@
+<!-- Add the scripts and files to be loaded with scripts here -->
+
+<script file="Main.nut" client="0" />
