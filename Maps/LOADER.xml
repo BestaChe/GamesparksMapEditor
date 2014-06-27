@@ -1,6 +1,7 @@
 <!-- This is the loader file. You can manually load your maps here./-->
 <!-- Just add a new line inside the <loader></loader> with the following code: /-->
-<!--Map name="file name here" /-->
+<!--Map name="filenamehere" /-->
+<!--NOTICE: Map names must be one word only. /-->
 <loader>
     <Map name="example" />
 </loader>
